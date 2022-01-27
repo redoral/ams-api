@@ -10,11 +10,10 @@ public class Role {
     int role_id;
     String name;
 
-    // Entity relationship
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
-    private User user;
 
+    // Entity relationship
+    @OneToOne(mappedBy = "role")
+    private User user;
 
     // Constructors
     public Role(){ }

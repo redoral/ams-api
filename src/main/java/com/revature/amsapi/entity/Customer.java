@@ -17,8 +17,7 @@ public class Customer {
     String dob;
 
     // Entity relationship
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    @OneToOne(mappedBy = "customer")
     private User user;
 
     @OneToMany(mappedBy = "customer")
