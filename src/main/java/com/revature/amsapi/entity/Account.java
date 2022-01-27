@@ -8,8 +8,7 @@ import java.util.List;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int account_number;
-    int customer_id;
+    Long account_number;
     double current_balance;
 
     @ManyToOne
@@ -21,14 +20,12 @@ public class Account {
 
     public Account(){}
 
-    public Account(int account_number, int customer_id, double current_balance) {
+    public Account(Long account_number, double current_balance) {
         this.account_number = account_number;
-        this.customer_id = customer_id;
         this.current_balance = current_balance;
     }
 
-    public Account(int customer_id, double current_balance) {
-        this.customer_id = customer_id;
+    public Account(double current_balance) {
         this.current_balance = current_balance;
     }
 }
