@@ -19,8 +19,6 @@ public class User {
     @JoinColumn(name = "customer", referencedColumnName = "customer_id")
     private Customer customer;
 
-
-
     // Constructors
     public User(){}
 
@@ -37,6 +35,7 @@ public class User {
         this.customer = customer;
     }
 
+    // Getters and setters
     public int getUser_id() {
         return user_id;
     }

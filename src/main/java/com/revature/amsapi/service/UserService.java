@@ -26,7 +26,7 @@ public class UserService {
 
     // Get a user by id
     public User getUser(int userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Monster with ID: " + userId + " does not exist."));
+        return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
     }
 
     // Creates a new user
@@ -34,7 +34,7 @@ public class UserService {
 
     // Deletes a user
     public boolean deleteUser(int userId) {
-        userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Monster with ID: " + userId + " does not exist."));
+        userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
 
         try {
             userRepository.deleteById(userId);
@@ -50,13 +50,13 @@ public class UserService {
     @Transactional
     public User updateUser(int userId, String password) {
         User updatedUser = userRepository.findById(userId).orElseThrow(() ->
-                new IllegalStateException("Monster with ID: " + userId + " does not exist."));
+                new IllegalStateException("User with ID: " + userId + " does not exist."));
 
         if (password !=  null){
             updatedUser.setPassword(password);
             return userRepository.save(updatedUser);
         } else {
-            throw new IllegalStateException("All fields must be provided.");
+            throw new IllegalStateException("Password cannot be provided.");
         }
     }
 }

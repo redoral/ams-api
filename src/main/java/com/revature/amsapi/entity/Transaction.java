@@ -15,11 +15,13 @@ public class Transaction {
     String transaction_sub_type;
     Double current_balance;
 
+    // Entity relationship
     @ManyToOne
     @JoinColumn(name="account_number", nullable=false)
     private Account account;
 
 
+    // Constructors
     public Transaction(){}
 
     public Transaction(int transaction_id, int transaction_ref_num, Date transaction_date, String transaction_type, String transaction_sub_type, Double current_balance, int account_number) {

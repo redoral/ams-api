@@ -11,6 +11,7 @@ public class Account {
     Long account_number;
     double current_balance;
 
+    // Entity relationship
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
@@ -18,6 +19,7 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
 
+    // Constructors
     public Account(){}
 
     public Account(Long account_number, double current_balance) {

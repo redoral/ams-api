@@ -10,7 +10,6 @@ public class Role {
     int role_id;
     String name;
 
-
     // Entity relationship
     @OneToOne(mappedBy = "role")
     private User user;
