@@ -18,7 +18,7 @@ public class Customer {
 
     // Entity relationship
     @OneToOne(mappedBy = "customer")
-    private User user;
+    private Users user;
 
     @OneToMany(mappedBy = "customer")
     private List<Account> account;

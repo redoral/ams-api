@@ -12,7 +12,7 @@ public class Role {
 
     // Entity relationship
     @OneToOne(mappedBy = "role")
-    private User user;
+    private Users user;
 
     // Constructors
     public Role(){ }

@@ -1,6 +1,6 @@
 package com.revature.amsapi.service;
 
-import com.revature.amsapi.entity.User;
+import com.revature.amsapi.entity.Users;
 import com.revature.amsapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,17 +20,17 @@ public class UserService {
     }
 
     // Returns all users
-    public List<User> getUsers(){
+    public List<Users> getUsers(){
         return userRepository.findAll();
     }
 
     // Get a user by id
-    public User getUser(int userId) {
+    public Users getUser(int userId) {
         return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
     }
 
     // Creates a new user
-    public User createUser(User user){ return userRepository.save(user); }
+    public Users createUser(Users user){ return userRepository.save(user); }
 
     // Deletes a user
     public boolean deleteUser(int userId) {
@@ -48,8 +48,8 @@ public class UserService {
 
     // Updates a user
     @Transactional
-    public User updateUser(int userId, String password) {
-        User updatedUser = userRepository.findById(userId).orElseThrow(() ->
+    public Users updateUser(int userId, String password) {
+        Users updatedUser = userRepository.findById(userId).orElseThrow(() ->
                 new IllegalStateException("User with ID: " + userId + " does not exist."));
 
         if (password !=  null){

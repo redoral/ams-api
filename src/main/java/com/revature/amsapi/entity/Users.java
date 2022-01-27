@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int user_id;
@@ -12,27 +12,23 @@ public class User {
 
     // Entity relationship
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role", referencedColumnName = "role_id")
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer", referencedColumnName = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     // Constructors
-    public User(){}
+    public Users(){}
 
-    public User(int user_id, String password, int role_id, int customer_id, Role role, Customer customer) {
+    public Users(int user_id, String password) {
         this.user_id = user_id;
         this.password = password;
-        this.role = role;
-        this.customer = customer;
     }
 
-    public User(String password, int role_id, int customer_id, Role role, Customer customer) {
+    public Users(String password) {
         this.password = password;
-        this.role = role;
-        this.customer = customer;
     }
 
     // Getters and setters
@@ -50,21 +46,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }
