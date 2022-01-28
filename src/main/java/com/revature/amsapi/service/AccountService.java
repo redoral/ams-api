@@ -48,12 +48,12 @@ public class AccountService {
 
     // Updates an account
     @Transactional
-    public Account updateAccount(Long accountId, Double newBalance) {
+    public Account updateAccount(Long accountId, Account account) {
         Account updatedAccount = accountRepository.findById(accountId).orElseThrow(() ->
                 new IllegalStateException("Customer with ID: " + accountId + " does not exist."));
 
-        if (newBalance !=  null) {
-            updatedAccount.setCurrent_balance(newBalance);
+        if (account.getCurrent_balance() > 0) {
+            updatedAccount.setCurrent_balance(account.getCurrent_balance());
         }
 
         return accountRepository.save(updatedAccount);
