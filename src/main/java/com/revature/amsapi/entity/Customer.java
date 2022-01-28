@@ -45,6 +45,14 @@ public class Customer {
         this.dob = dob;
     }
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
+
     public int getPan() {
         return pan;
     }
@@ -91,5 +99,21 @@ public class Customer {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public List<Account> getAccount() {
+        return account;
+    }
+
+    public void setAccount(List<Account> account) {
+        this.account = account;
     }
 }

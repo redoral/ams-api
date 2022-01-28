@@ -1,6 +1,7 @@
 package com.revature.amsapi.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -11,8 +12,8 @@ public class Role {
     String name;
 
     // Entity relationship
-    @OneToOne(mappedBy = "role")
-    private Users user;
+    @OneToMany(mappedBy = "role")
+    private List<Users> user;
 
     // Constructors
     public Role(){ }

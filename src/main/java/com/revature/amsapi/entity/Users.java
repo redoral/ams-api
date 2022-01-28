@@ -10,14 +10,16 @@ public class Users {
     int user_id;
     String password;
 
+
     // Entity relationship
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
 
     // Constructors
     public Users(){}
@@ -46,5 +48,21 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
