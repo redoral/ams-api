@@ -34,7 +34,8 @@ public class UserController {
     }
 
     @PostMapping
-    public Users createUser(@RequestBody Users user){ return userService.createUser(user); }
+    public Users createUser(@RequestBody Users user){
+        return userService.createUser(user); }
 
     @DeleteMapping(path = "{userId}")
     public boolean deleteUser(@PathVariable("userId") Integer userId){

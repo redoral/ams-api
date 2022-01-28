@@ -1,7 +1,9 @@
 package com.revature.amsapi.service;
 
 import com.revature.amsapi.entity.Account;
+import com.revature.amsapi.entity.Customer;
 import com.revature.amsapi.repository.AccountRepository;
+import com.revature.amsapi.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +14,13 @@ import java.util.List;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final CustomerRepository customerRepository;
 
     // Init repository to call queries
     @Autowired
-    public AccountService(AccountRepository accountRepository){
+    public AccountService(CustomerRepository customerRepository, AccountRepository accountRepository){
         this.accountRepository = accountRepository;
+        this.customerRepository = customerRepository;
     }
 
     // Returns all accounts
@@ -30,7 +34,11 @@ public class AccountService {
     }
 
     // Creates a new account
-    public Account createAccount(Account account){ return accountRepository.save(account); }
+    public Account createAccount(Account account){
+        Customer customer = customerRepository.findById(account.getCustomer().getCustomer_id()).orElseThrow(() -> new IllegalStateException("Fail"));
+        account.setCustomer(customer);
+        return accountRepository.save(account);
+    }
 
     // Deletes an account
     public boolean deleteAccount(Long accountId) {

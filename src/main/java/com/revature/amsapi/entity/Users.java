@@ -1,5 +1,7 @@
 package com.revature.amsapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,12 +16,11 @@ public class Users {
     // Entity relationship
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
+    public Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
+    public Customer customer;
 
     // Constructors
     public Users(){}
@@ -50,16 +51,8 @@ public class Users {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public Customer getCustomer() {
-        return customer;
     }
 
     public void setCustomer(Customer customer) {

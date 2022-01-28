@@ -1,5 +1,7 @@
 package com.revature.amsapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,10 +20,12 @@ public class Customer {
 
     // Entity relationship
     @OneToOne(mappedBy = "customer")
-    private Users user;
+    @JsonIgnore
+    public Users user;
 
     @OneToMany(mappedBy = "customer")
-    private List<Account> account;
+    @JsonIgnore
+    public List<Account> account;
 
     // Constructors
     public Customer(){}
@@ -101,16 +105,8 @@ public class Customer {
         this.dob = dob;
     }
 
-    public Users getUser() {
-        return user;
-    }
-
     public void setUser(Users user) {
         this.user = user;
-    }
-
-    public List<Account> getAccount() {
-        return account;
     }
 
     public void setAccount(List<Account> account) {

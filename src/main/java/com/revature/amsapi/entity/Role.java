@@ -1,5 +1,7 @@
 package com.revature.amsapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Role {
     String name;
 
     // Entity relationship
+    @JsonIgnore
     @OneToMany(mappedBy = "role")
     private List<Users> user;
 
