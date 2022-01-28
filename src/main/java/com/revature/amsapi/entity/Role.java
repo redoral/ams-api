@@ -25,4 +25,22 @@ public class Role {
     public Role(String name){
         this.name = name;
     }
+
+    // Getters and setters
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -30,4 +30,20 @@ public class Account {
     public Account(double current_balance) {
         this.current_balance = current_balance;
     }
+
+    public Long getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(Long account_number) {
+        this.account_number = account_number;
+    }
+
+    public double getCurrent_balance() {
+        return current_balance;
+    }
+
+    public void setCurrent_balance(double current_balance) {
+        this.current_balance = current_balance;
+    }
 }

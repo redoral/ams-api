@@ -44,4 +44,52 @@ public class Customer {
         this.email = email;
         this.dob = dob;
     }
+
+    public int getPan() {
+        return pan;
+    }
+
+    public void setPan(int pan) {
+        this.pan = pan;
+    }
+
+    public int getCitizen_uid() {
+        return citizen_uid;
+    }
+
+    public void setCitizen_uid(int citizen_uid) {
+        this.citizen_uid = citizen_uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 }

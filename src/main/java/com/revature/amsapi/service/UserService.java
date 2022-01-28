@@ -56,7 +56,7 @@ public class UserService {
             updatedUser.setPassword(password);
             return userRepository.save(updatedUser);
         } else {
-            throw new IllegalStateException("Password cannot be provided.");
+            throw new IllegalStateException("Password must be provided.");
         }
     }
 }
