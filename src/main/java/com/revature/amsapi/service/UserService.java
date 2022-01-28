@@ -41,8 +41,8 @@ public class UserService {
 
     // Creates a new user
     public Users createUser(Users user){
-        customerRepository.save(user.customer);
-        Role role = roleRepository.findById(user.role.getRole_id()).orElseThrow(() -> new IllegalStateException("Fail"));
+        customerRepository.save(user.getCustomer());
+        Role role = roleRepository.findById(user.getRole().getRole_id()).orElseThrow(() -> new IllegalStateException("Fail"));
         user.setRole(role);
         return userRepository.save(user);
     }

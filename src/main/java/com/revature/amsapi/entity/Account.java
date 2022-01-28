@@ -16,10 +16,10 @@ public class Account {
     // Entity relationship
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
-    private Customer customer;
+    public Customer customer;
 
-    @OneToMany(mappedBy = "account")
     @JsonIgnore
+    @OneToMany(mappedBy = "account")
     private List<Transaction> transaction;
 
     // Constructors

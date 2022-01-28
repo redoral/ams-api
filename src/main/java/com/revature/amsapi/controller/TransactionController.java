@@ -35,7 +35,9 @@ public class TransactionController {
     }
 
     @PostMapping
-    public Transaction createTransaction(@RequestBody Transaction transaction){ return transactionService.createTransaction(transaction); }
+    public Transaction createTransaction(@RequestBody Transaction transaction){
+        return transactionService.createTransaction(transaction);
+    }
 
     @DeleteMapping(path = "{transactionId}")
     public boolean deleteTransaction(@PathVariable("transactionId") Integer transactionId){

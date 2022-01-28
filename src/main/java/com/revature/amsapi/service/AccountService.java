@@ -35,6 +35,7 @@ public class AccountService {
 
     // Creates a new account
     public Account createAccount(Account account){
+
         Customer customer = customerRepository.findById(account.getCustomer().getCustomer_id()).orElseThrow(() -> new IllegalStateException("Fail"));
         account.setCustomer(customer);
         return accountRepository.save(account);
