@@ -28,7 +28,6 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
-
     // Returns all users
     public List<Users> getUsers(){
         return userRepository.findAll();
@@ -42,7 +41,7 @@ public class UserService {
     // Creates a new user
     public Users createUser(Users user){
         customerRepository.save(user.getCustomer());
-        Role role = roleRepository.findById(user.getRole().getRole_id()).orElseThrow(() -> new IllegalStateException("Fail"));
+        Role role = roleRepository.findById(user.getRole().getRole_id()).orElseThrow(() -> new IllegalStateException("Role with ID: " + user.getRole().getRole_id() + " does not exist."));
         user.setRole(role);
         return userRepository.save(user);
     }

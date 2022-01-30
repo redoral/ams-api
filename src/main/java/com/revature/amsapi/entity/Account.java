@@ -11,6 +11,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long account_number;
+    String account_type;
     double current_balance;
 
     // Entity relationship
@@ -25,9 +26,10 @@ public class Account {
     // Constructors
     public Account(){}
 
-    public Account(Long account_number, double current_balance) {
+    public Account(Long account_number, double current_balance, String account_type) {
         this.account_number = account_number;
         this.current_balance = current_balance;
+        this.account_type = account_type;
     }
 
     public Account(double current_balance) {
@@ -48,6 +50,14 @@ public class Account {
 
     public void setCurrent_balance(double current_balance) {
         this.current_balance = current_balance;
+    }
+
+    public String getAccount_type() {
+        return account_type;
+    }
+
+    public void setAccount_type(String account_type) {
+        this.account_type = account_type;
     }
 
     public Customer getCustomer() {

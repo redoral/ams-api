@@ -33,6 +33,11 @@ public class AccountService {
         return accountRepository.findById(accountId).orElseThrow(() -> new IllegalStateException("Account with ID: " + accountId + " does not exist."));
     }
 
+    // Get an account by customer_id
+    public List<Account> getAccountByCustomer(Integer customerId) {
+        return accountRepository.selectAccountsByCustomer(customerId);
+    }
+
     // Creates a new account
     public Account createAccount(Account account){
 

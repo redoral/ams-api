@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/accounts")
+@CrossOrigin
 public class AccountController {
     private final AccountService accountService;
 
@@ -30,6 +31,11 @@ public class AccountController {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    @GetMapping(path = "customer/{customerId}")
+    public List<Account> getAccountsByCustomer(@PathVariable Integer customerId) {
+        return accountService.getAccountByCustomer(customerId);
     }
 
     @PostMapping
