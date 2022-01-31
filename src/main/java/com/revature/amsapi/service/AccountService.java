@@ -16,29 +16,24 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final CustomerRepository customerRepository;
 
-    // Init repository to call queries
     @Autowired
     public AccountService(CustomerRepository customerRepository, AccountRepository accountRepository){
         this.accountRepository = accountRepository;
         this.customerRepository = customerRepository;
     }
 
-    // Returns all accounts
     public List<Account> getAccounts(){
         return accountRepository.findAll();
     }
 
-    // Get an account by id
     public Account getAccount(Long accountId) {
         return accountRepository.findById(accountId).orElseThrow(() -> new IllegalStateException("Account with ID: " + accountId + " does not exist."));
     }
 
-    // Get an account by customer_id
     public List<Account> getAccountByCustomer(Integer customerId) {
         return accountRepository.selectAccountsByCustomer(customerId);
     }
 
-    // Creates a new account
     public Account createAccount(Account account){
 
         Customer customer = customerRepository.findById(account.getCustomer().getCustomer_id()).orElseThrow(() -> new IllegalStateException("Fail"));
@@ -46,7 +41,6 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    // Deletes an account
     public boolean deleteAccount(Long accountId) {
         accountRepository.findById(accountId).orElseThrow(() -> new IllegalStateException("Account with ID: " + accountId + " does not exist."));
 
@@ -60,7 +54,6 @@ public class AccountService {
         return true;
     }
 
-    // Updates an account
     @Transactional
     public Account updateAccount(Long accountId, Account account) {
         Account updatedAccount = accountRepository.findById(accountId).orElseThrow(() ->

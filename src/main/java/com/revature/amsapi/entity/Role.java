@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int role_id;
@@ -31,7 +32,6 @@ public class Role {
     }
 
     // Getters and setters
-
     public int getRole_id() {
         return role_id;
     }

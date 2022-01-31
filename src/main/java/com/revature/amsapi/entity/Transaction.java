@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table
 public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int transaction_id;
@@ -42,6 +43,7 @@ public class Transaction {
         this.account = account;
     }
 
+    // Getters and setters
     public int getTransaction_id() {
         return transaction_id;
     }

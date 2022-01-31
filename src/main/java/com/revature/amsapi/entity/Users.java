@@ -7,12 +7,12 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int user_id;
     String username;
     String password;
-
 
     // Entity relationship
     @ManyToOne(cascade = CascadeType.ALL)

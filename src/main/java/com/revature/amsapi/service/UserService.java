@@ -1,6 +1,5 @@
 package com.revature.amsapi.service;
 
-import com.revature.amsapi.entity.Customer;
 import com.revature.amsapi.entity.Role;
 import com.revature.amsapi.entity.Users;
 import com.revature.amsapi.repository.CustomerRepository;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -20,7 +18,6 @@ public class UserService {
     private final CustomerRepository customerRepository;
     private final RoleRepository roleRepository;
 
-    // Init repository to call queries
     @Autowired
     public UserService(UserRepository userRepository, CustomerRepository customerRepository, RoleRepository roleRepository){
         this.userRepository = userRepository;
@@ -28,22 +25,18 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
-    // Returns all users
     public List<Users> getUsers(){
         return userRepository.findAll();
     }
 
-    // Get a user by id
     public Users getUser(int userId) {
         return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
     }
 
-    // Authenticates login
     public Users loginUser(Users user){
         return userRepository.loginUser(user.getUsername(), user.getPassword());
     }
 
-    // Creates a new user
     public Users createUser(Users user){
         customerRepository.save(user.getCustomer());
         Role role = roleRepository.findById(user.getRole().getRole_id()).orElseThrow(() -> new IllegalStateException("Role with ID: " + user.getRole().getRole_id() + " does not exist."));
@@ -51,7 +44,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // Deletes a user
     public boolean deleteUser(int userId) {
         userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
 
@@ -65,7 +57,6 @@ public class UserService {
         return true;
     }
 
-    // Updates a user
     @Transactional
     public Users updateUser(int userId, String password) {
         Users updatedUser = userRepository.findById(userId).orElseThrow(() ->

@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int customer_id;
@@ -49,6 +50,7 @@ public class Customer {
         this.dob = dob;
     }
 
+    // Getters and setters
     public int getCustomer_id() {
         return customer_id;
     }

@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table
 public class Account {
+
     @Id
     @SequenceGenerator(name="ACCOUNT_SEQUENCE_GENERATOR", sequenceName="ACCOUNT_SEQUENCE", initialValue=1782647590)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_SEQUENCE_GENERATOR")
@@ -33,6 +34,7 @@ public class Account {
         this.account_type = account_type;
     }
 
+    // Getters and setters
     public Account(double current_balance) {
         this.current_balance = current_balance;
     }

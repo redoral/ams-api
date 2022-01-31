@@ -13,26 +13,21 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    // Init repository to call queries
     @Autowired
     public CustomerService(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
 
-    // Returns all customer
     public List<Customer> getCustomers(){
         return customerRepository.findAll();
     }
 
-    // Get a customer by id
     public Customer getCustomer(int customerId) {
         return customerRepository.findById(customerId).orElseThrow(() -> new IllegalStateException("Customer with ID: " + customerId + " does not exist."));
     }
 
-    // Creates a new customer
     public Customer createCustomer(Customer customer){ return customerRepository.save(customer); }
 
-    // Deletes a customer
     public boolean deleteCustomer(int customerId) {
         customerRepository.findById(customerId).orElseThrow(() -> new IllegalStateException("Customer with ID: " + customerId + " does not exist."));
 
@@ -46,7 +41,6 @@ public class CustomerService {
         return true;
     }
 
-    // Updates a customer
     @Transactional
     public Customer updateCustomer(int customerId, Customer customer) {
         Customer updatedCustomer = customerRepository.findById(customerId).orElseThrow(() ->

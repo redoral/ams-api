@@ -9,7 +9,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/roles")
+@CrossOrigin
 public class RoleController {
+
     private final RoleService roleService;
 
     @Autowired

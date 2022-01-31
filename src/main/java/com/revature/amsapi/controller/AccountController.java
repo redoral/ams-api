@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping(path = "api/v1/accounts")
 @CrossOrigin
 public class AccountController {
+
     private final AccountService accountService;
 
     @Autowired
