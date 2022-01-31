@@ -29,6 +29,10 @@ public class TransactionService {
         return transactionRepository.findById(transactionId).orElseThrow(() -> new IllegalStateException("Transaction with ID: " + transactionId + " does not exist."));
     }
 
+    public List<Transaction> getTransactionsByAccount(Long accountNumber){
+        return transactionRepository.getTransactionsByAccount(accountNumber);
+    }
+
     public Transaction createTransaction(Transaction transaction){
         Account account = accountRepository.findById(transaction.getAccount().getAccount_number()).orElseThrow(() -> new IllegalStateException("Fail"));
         transaction.setAccount(account);

@@ -36,6 +36,11 @@ public class TransactionController {
         }
     }
 
+    @GetMapping(path="account/{accountNumber}")
+    public List<Transaction> getTransactionsByAccount(@PathVariable("accountNumber") Long accountNumber){
+        return transactionService.getTransactionsByAccount(accountNumber);
+    }
+
     @PostMapping
     public Transaction createTransaction(@RequestBody Transaction transaction){
         return transactionService.createTransaction(transaction);

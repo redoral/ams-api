@@ -1,7 +1,6 @@
 package com.revature.amsapi.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
