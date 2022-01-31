@@ -38,6 +38,11 @@ public class UserService {
         return userRepository.findById(userId).orElseThrow(() -> new IllegalStateException("User with ID: " + userId + " does not exist."));
     }
 
+    // Authenticates login
+    public Users loginUser(Users user){
+        return userRepository.loginUser(user.getUsername(), user.getPassword());
+    }
+
     // Creates a new user
     public Users createUser(Users user){
         customerRepository.save(user.getCustomer());

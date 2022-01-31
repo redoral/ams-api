@@ -1,6 +1,5 @@
 package com.revature.amsapi.controller;
 
-import com.revature.amsapi.entity.Role;
 import com.revature.amsapi.entity.Users;
 import com.revature.amsapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/users")
+@CrossOrigin
 public class UserController {
     private final UserService userService;
 
@@ -31,6 +31,11 @@ public class UserController {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    @PostMapping(path = "login")
+    public Users loginUser(@RequestBody Users user){
+        return userService.loginUser(user);
     }
 
     @PostMapping

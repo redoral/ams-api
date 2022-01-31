@@ -10,6 +10,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int user_id;
+    String username;
     String password;
 
 
@@ -25,12 +26,14 @@ public class Users {
     // Constructors
     public Users(){}
 
-    public Users(int user_id, String password) {
+    public Users(int user_id, String username, String password) {
         this.user_id = user_id;
+        this.username = username;
         this.password = password;
     }
 
-    public Users(String password) {
+    public Users(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -41,6 +44,14 @@ public class Users {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
