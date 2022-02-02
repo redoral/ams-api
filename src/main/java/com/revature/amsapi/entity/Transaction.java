@@ -9,6 +9,8 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int transaction_id;
+    @SequenceGenerator(name="CUSTOMER_SEQUENCE_GENERATOR", sequenceName="CUSTOMER_SEQUENCE", initialValue=100)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUSTOMER_SEQUENCE_GENERATOR")
     int transaction_ref_num;
     String transaction_date;
     String transaction_type;

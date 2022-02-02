@@ -37,6 +37,7 @@ public class Users {
         this.password = password;
     }
 
+
     // Getters and setters
     public int getUser_id() {
         return user_id;

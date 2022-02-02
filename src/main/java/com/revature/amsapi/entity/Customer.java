@@ -10,9 +10,12 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="CUSTOMER_SEQUENCE_GENERATOR", sequenceName="CUSTOMER_SEQUENCE", initialValue=132460)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUSTOMER_SEQUENCE_GENERATOR")
     int customer_id;
+    @Column(unique = true)
     int pan;
+    @Column(unique = true)
     int citizen_uid;
     String name;
     String address;

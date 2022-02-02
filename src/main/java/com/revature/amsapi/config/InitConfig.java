@@ -14,9 +14,8 @@ public class InitConfig {
     CommandLineRunner commandLineRunner(RoleRepository roleRepository) {
         return args -> {
             // Roles
-            Role customer = new Role(1, "Customer");
+            Role customer = new Role(1, "User");
             Role manager = new Role(2, "Manager");
-
             roleRepository.saveAll(Arrays.asList(customer, manager));
         };
     }

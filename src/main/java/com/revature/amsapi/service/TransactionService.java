@@ -35,6 +35,22 @@ public class TransactionService {
 
     public Transaction createTransaction(Transaction transaction){
         Account account = accountRepository.findById(transaction.getAccount().getAccount_number()).orElseThrow(() -> new IllegalStateException("Fail"));
+
+        double accountBalance = account.getCurrent_balance();
+        double transactionBalance = transaction.getCurrent_balance();
+
+        System.out.println(transaction.getTransaction_type());
+
+        if (transaction.getTransaction_type().equals("Deposit")){
+                account.setCurrent_balance(accountBalance + transactionBalance);
+        } else if ((transaction.getTransaction_type().equals("Withdraw") && accountBalance > transactionBalance)
+                || (transaction.getTransaction_type().equals("Transfer") && accountBalance > transactionBalance)){
+                account.setCurrent_balance(accountBalance - transactionBalance);
+        } else {
+            throw new IllegalStateException("Fail.");
+        }
+
+        accountRepository.save(account);
         transaction.setAccount(account);
         return transactionRepository.save(transaction);
     }

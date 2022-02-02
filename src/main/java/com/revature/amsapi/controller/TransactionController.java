@@ -1,8 +1,6 @@
 package com.revature.amsapi.controller;
 
-import com.revature.amsapi.entity.Role;
 import com.revature.amsapi.entity.Transaction;
-import com.revature.amsapi.service.RoleService;
 import com.revature.amsapi.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

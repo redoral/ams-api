@@ -34,11 +34,11 @@ public class Account {
         this.account_type = account_type;
     }
 
-    // Getters and setters
     public Account(double current_balance) {
         this.current_balance = current_balance;
     }
 
+    // Getters and setters
     public Long getAccount_number() {
         return account_number;
     }
