@@ -100,4 +100,13 @@ public class Transaction {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    public String toCSV(){
+        return this.transaction_id + ", " +
+                this.transaction_ref_num + ", " +
+                this.transaction_date + ", " +
+                this.transaction_type + ", " +
+                this.transaction_sub_type + ", " +
+                this.current_balance + ", ";
+    }
 }

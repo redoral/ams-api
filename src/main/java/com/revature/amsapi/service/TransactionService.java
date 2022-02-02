@@ -44,7 +44,7 @@ public class TransactionService {
         if (transaction.getTransaction_type().equals("Deposit")){
                 account.setCurrent_balance(accountBalance + transactionBalance);
         } else if ((transaction.getTransaction_type().equals("Withdraw") && accountBalance > transactionBalance)
-                || (transaction.getTransaction_type().equals("Transfer") && accountBalance > transactionBalance)){
+                    || (transaction.getTransaction_type().equals("Transfer") && accountBalance > transactionBalance)){
                 account.setCurrent_balance(accountBalance - transactionBalance);
         } else {
             throw new InvalidInputException("Invalid transaction type: " + transaction.getTransaction_type());
