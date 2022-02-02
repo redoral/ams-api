@@ -2,6 +2,8 @@ package com.revature.amsapi.service;
 
 import com.revature.amsapi.entity.Account;
 import com.revature.amsapi.entity.Transaction;
+import com.revature.amsapi.exception.InvalidInputException;
+import com.revature.amsapi.exception.TransactionNotFoundException;
 import com.revature.amsapi.repository.AccountRepository;
 import com.revature.amsapi.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +27,19 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public Transaction getTransaction(int transactionId) {
-        return transactionRepository.findById(transactionId).orElseThrow(() -> new IllegalStateException("Transaction with ID: " + transactionId + " does not exist."));
+    public Transaction getTransaction(int transactionId) throws TransactionNotFoundException {
+        return transactionRepository.findById(transactionId).orElseThrow(() -> new TransactionNotFoundException("Transaction with ID: " + transactionId + " does not exist."));
     }
 
     public List<Transaction> getTransactionsByAccount(Long accountNumber){
         return transactionRepository.getTransactionsByAccount(accountNumber);
     }
 
-    public Transaction createTransaction(Transaction transaction){
-        Account account = accountRepository.findById(transaction.getAccount().getAccount_number()).orElseThrow(() -> new IllegalStateException("Fail"));
+    public Transaction createTransaction(Transaction transaction) throws TransactionNotFoundException, InvalidInputException {
+        Account account = accountRepository.findById(transaction.getAccount().getAccount_number()).orElseThrow(() -> new TransactionNotFoundException("Account with account number: " + transaction.getAccount().getAccount_number() + " does not exist."));
 
         double accountBalance = account.getCurrent_balance();
         double transactionBalance = transaction.getCurrent_balance();
-
-        System.out.println(transaction.getTransaction_type());
 
         if (transaction.getTransaction_type().equals("Deposit")){
                 account.setCurrent_balance(accountBalance + transactionBalance);
@@ -47,7 +47,7 @@ public class TransactionService {
                 || (transaction.getTransaction_type().equals("Transfer") && accountBalance > transactionBalance)){
                 account.setCurrent_balance(accountBalance - transactionBalance);
         } else {
-            throw new IllegalStateException("Fail.");
+            throw new InvalidInputException("Invalid transaction type: " + transaction.getTransaction_type());
         }
 
         accountRepository.save(account);
@@ -55,16 +55,9 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public boolean deleteTransaction(int transactionId) {
-        transactionRepository.findById(transactionId).orElseThrow(() -> new IllegalStateException("Transaction with ID: " + transactionId + " does not exist."));
-
-        try {
-            transactionRepository.deleteById(transactionId);
-        } catch (Exception e) {
-            System.out.println("Error:" + e);
-            return false;
-        }
-
+    public boolean deleteTransaction(int transactionId) throws TransactionNotFoundException {
+        transactionRepository.findById(transactionId).orElseThrow(() -> new TransactionNotFoundException("Transaction with ID: " + transactionId + " does not exist."));
+        transactionRepository.deleteById(transactionId);
         return true;
     }
 
