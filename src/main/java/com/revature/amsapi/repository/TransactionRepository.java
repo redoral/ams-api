@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
-    @Query("SELECT s FROM Transaction s where s.account.account_number = ?1")
+    @Query("SELECT s FROM Transaction s WHERE s.account.account_number = ?1 ORDER BY s.transaction_id DESC")
     List<Transaction> getTransactionsByAccount(Long id);
 }
