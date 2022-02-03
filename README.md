@@ -100,7 +100,7 @@ So, for example, you want to get roles, the complete endpoint would be: `/api/v1
 - `GET` to `/transactions/{transaction_id}` will return a transaction by it's ID
 - `GET` to `/transactions/account/{account_number}` will return transactions from an account by it's account number
 - `GET` to `/transactions/account/{account_number}/5` will return the 5 most recent transactions from an account by it's account number
-- `GET` to `/transactions/account/{account_number}/{timestamp1}/{timestamp2}` will return the 5 most recent transactions from an account by it's account number and given date range
+- `GET` to `/transactions/account/{account_number}/{timestamp1}/{timestamp2}` will return transactions from an account by it's account number and given date range
 - `POST` to `/transactions` will create a new transaction and return that new transaction
   ```JSON
   {
@@ -114,7 +114,7 @@ So, for example, you want to get roles, the complete endpoint would be: `/api/v1
     }
   }
   ```
-- `DELETE` to `/transactions/{transaction}` will delete a transaction by it's ID
+- `DELETE` to `/transactions/{transaction_id}` will delete a transaction by it's ID
 
 
 ## License
