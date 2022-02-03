@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This project is an Account Management System RESTful API that lets users get, create, delete, and upate users, accounts, transactions, and more.
+This project is an Account Management System RESTful API that lets users get, create, delete, and update users, accounts, transactions, and more.
 
 ## Technologies Used
 
@@ -35,8 +35,7 @@ A `:` in front of a portion of the path means to replace with desired value.
 All request/response bodies are in JSON.
 
 #### Base endpoint
-The base endpoint for all entities is: `/api/v1`
-
+The base endpoint for all entities is: `/api/v1`<br>
 So, for example, you want to get roles, the complete endpoint would be: `/api/v1/roles`
 
 #### Roles
