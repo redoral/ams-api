@@ -2,7 +2,8 @@
 
 ## Project Description
 
-This project is an Account Management System RESTful API that lets users get, create, delete, and update users, accounts, transactions, and more.
+This project is an Account Management System RESTful API that lets users get, create, delete, and update users, accounts, transactions, and more. 
+***This README is a work-in-progress and is not complete documentation of the API at it's current state.***
 
 ## Technologies Used
 
