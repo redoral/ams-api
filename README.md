@@ -2,7 +2,8 @@
 
 ## Project Description
 
-This project is an Account Management System RESTful API that lets users get, create, delete, and update users, accounts, transactions, and more.
+This project is an Account Management System RESTful API that lets users get, create, delete, and update users, accounts, transactions, and more. 
+***This README is a work-in-progress and is not complete documentation of the API at it's current state.***
 
 ## Technologies Used
 
@@ -79,7 +80,7 @@ So, for example, you want to get roles, the complete endpoint would be: `/api/v1
 
 - `GET` to `/accounts` will return all accounts.
 - `GET` to `/accounts/{account_number}` will return an account by it's account number.
-- `GET` to `/accounts/{customer_id}` will return accounts for a specific customer by their customer ID.
+- `GET` to `/accounts/customer/{customer_id}` will return accounts for a specific customer by their customer ID.
 - `POST` to `/accounts` will create a new account and return that new account.
   ```JSON
   {
