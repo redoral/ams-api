@@ -27,6 +27,10 @@ public class CustomerService {
         return customerRepository.findById(customerId).orElseThrow(() -> new CustomerNotFoundException("Customer with ID: " + customerId + " does not exist."));
     }
 
+    public Customer getCustomerByPan(int pan) {
+        return customerRepository.findByPan(pan).get(0);
+    }
+
     public Customer createCustomer(Customer customer){ return customerRepository.save(customer); }
 
     public boolean deleteCustomer(int customerId) throws CustomerNotFoundException{

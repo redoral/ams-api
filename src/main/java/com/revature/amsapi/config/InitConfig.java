@@ -1,5 +1,5 @@
 package com.revature.amsapi.config;
-
+;
 import com.revature.amsapi.entity.Role;
 import com.revature.amsapi.repository.RoleRepository;
 import org.springframework.boot.CommandLineRunner;

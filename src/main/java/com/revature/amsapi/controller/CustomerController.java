@@ -28,6 +28,9 @@ public class CustomerController {
     @GetMapping(path = "{customerId}")
     public Customer getCustomerById(@PathVariable("customerId") Integer customerId) throws CustomerNotFoundException { return customerService.getCustomer(customerId); }
 
+    @GetMapping(path = "pan/{pan}")
+    public Customer getCustomerByPan(@PathVariable("pan") Integer pan) { return customerService.getCustomerByPan(pan); }
+
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer){ return customerService.createCustomer(customer); }
 

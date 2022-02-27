@@ -1,6 +1,4 @@
-package com.revature.amsapi.entity;
-
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
+package com.revature.amsapi.entity;;
 
 import javax.persistence.*;
 
@@ -35,6 +33,13 @@ public class Users {
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public Users(String username, String password, Customer customer, Role role){
+        this.username = username;
+        this.password = password;
+        this.customer = customer;
+        this.role = role;
     }
 
 
